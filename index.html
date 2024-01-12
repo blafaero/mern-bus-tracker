@@ -15,11 +15,11 @@
 <body>
 
 <div id="map"></div>
-<div class="map-overlay top">
-  <button style="font-size: 2em;" onclick="run()">
-    Click Here to Show Live Bus Data
-  </button>
-</div>
+  <div class="map-overlay top">
+    <button style="font-size: 2em;" onclick="run()">
+      Click Here to Show Live Bus Data
+    </button>
+  </div>
 <div class="map-overlay top" id="last-updated">
   <p style="font-size: 1em; position: relative; top: 2em">
     Last Updated:
@@ -31,11 +31,15 @@
   // Access Token defined in .private/keys.js
   //mapboxgl.accessToken = "";
 
+  if (mapboxgl.accessToken === null || mapboxgl.accessToken === undefined){
+    mapboxgl.accessToken = prompt("To make use of this tool, please paste your mapbox API Key:");
+  }
+
   const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-71.101, 42.358],
-    zoom: 13
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-71.101, 42.358],
+      zoom: 13
   })
 
   // Add a scale control to the map
@@ -43,3 +47,5 @@
 </script>
 </body>
 </html>
+
+

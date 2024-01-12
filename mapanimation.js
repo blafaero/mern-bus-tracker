@@ -3,10 +3,6 @@ async function run(){
 	const locations = await getBusLocations();
 
     for (i = 0; i < locations.length; i++) {
-        console.log(locations[i].attributes.latitude)
-        console.log(locations[i].attributes.longitude)
-
-        
         marker = markers.find(marker => marker.id === locations[i].id);
         if (marker === undefined) {
             if (locations[i].attributes.occupancy_status === "MANY_SEATS_AVAILABLE") {
